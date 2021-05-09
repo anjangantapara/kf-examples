@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: knative-test-anjan
+---
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: helloworld
+  namespace: knative-test-anjan
+spec: 
+  template:
+    spec:
+      containers:
+      - image: mbrouns/helloworld:v1
+        env:
+        - name: TARGET
+          value: "v1"
